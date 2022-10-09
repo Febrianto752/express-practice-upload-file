@@ -5,7 +5,7 @@ import fs from "fs";
 export const getProducts = async (req, res) => {
   try {
     const response = await Product.findAll();
-    console.log(response);
+
     res.json(response);
   } catch (error) {
     console.log(error.message);
@@ -25,7 +25,7 @@ export const getProductById = async (req, res) => {
   }
 };
 export const saveProduct = (req, res) => {
-  if (req.files === null) {
+  if (!req.files) {
     return res.status(400).json({ msg: "No file Uploaded" });
   }
 
@@ -66,7 +66,7 @@ export const updateProduct = async (req, res) => {
   if (!product) return res.status(404).json({ msg: "Data Not Found!" });
 
   let fileName = "";
-  if (req.files === null) {
+  if (!req.files) {
     fileName = product.image;
   } else {
     const file = req.files.file;
