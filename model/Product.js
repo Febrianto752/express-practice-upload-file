@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import db from "../config/Database";
+import db from "../config/Database.js";
 
 const { DataTypes } = Sequelize;
 
@@ -17,6 +17,6 @@ const Product = db.define(
 
 export default Product;
 
-(async () => {
-  await db.sync();
-})();
+// (async () => {
+//   await db.sync();
+// })();
